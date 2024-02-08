@@ -78,5 +78,10 @@ namespace txtedit
             popup.replaceCheck.Checked = true;
             popup.Show();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

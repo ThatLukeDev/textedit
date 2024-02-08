@@ -64,9 +64,11 @@
             this.replaceCheck.TabIndex = 2;
             this.replaceCheck.Text = "Replace:";
             this.replaceCheck.UseVisualStyleBackColor = true;
+            this.replaceCheck.CheckedChanged += new System.EventHandler(this.replaceCheck_CheckedChanged);
             // 
             // replaceBox
             // 
+            this.replaceBox.Enabled = false;
             this.replaceBox.Location = new System.Drawing.Point(12, 74);
             this.replaceBox.Name = "replaceBox";
             this.replaceBox.Size = new System.Drawing.Size(260, 20);
@@ -97,7 +99,7 @@
             this.replaceNextBtn.Name = "replaceNextBtn";
             this.replaceNextBtn.Size = new System.Drawing.Size(87, 23);
             this.replaceNextBtn.TabIndex = 6;
-            this.replaceNextBtn.Text = "Replace Next";
+            this.replaceNextBtn.Text = "Replace";
             this.replaceNextBtn.UseVisualStyleBackColor = true;
             this.replaceNextBtn.Click += new System.EventHandler(this.replaceNextBtn_Click);
             // 
@@ -126,6 +128,7 @@
             this.Controls.Add(this.findBox);
             this.Name = "findReplace";
             this.Text = "Find and Replace";
+            this.Load += new System.EventHandler(this.findReplace_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
