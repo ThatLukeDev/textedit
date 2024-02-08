@@ -83,5 +83,62 @@ namespace txtedit
         {
 
         }
+
+        private void inToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.SizeInPoints + 1);
+        }
+
+        private void outToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Font = new Font(textBox1.Font.FontFamily, textBox1.Font.SizeInPoints - 1);
+        }
+
+        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Font = fontDialog1.Font;
+        }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fontDialog1.Font = textBox1.Font;
+            fontDialog1.ShowDialog();
+            textBox1.Font = fontDialog1.Font;
+        }
+
+        private void textBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            fileName = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
+            if (fileName == "")
+            {
+                return;
+            }
+            StreamReader sr = new StreamReader(fileName);
+            textBox1.Text = sr.ReadToEnd();
+            sr.Close();
+        }
+
+        private void textBox1_Enter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!e.Control)
+                return;
+            switch (e.KeyCode)
+            {
+                case Keys.S:
+                    saveToolStripMenuItem_Click(this, new EventArgs());
+                    break;
+                case Keys.O:
+                    openToolStripMenuItem_Click(this, new EventArgs());
+                    break;
+                case Keys.F:
+                    findToolStripMenuItem_Click(this, new EventArgs());
+                    break;
+            }
+        }
     }
 }
